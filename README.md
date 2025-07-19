@@ -1,121 +1,104 @@
-🛍️ Maka Store Backend API
-¡Bienvenido al backend de Maka Store! Este proyecto es una API RESTful robusta desarrollada con Spring Boot, diseñada para gestionar un sistema de comercio electrónico completo, incluyendo productos, categorías, clientes, pedidos y detalles de pedido.
+# 🛍️ Maka Store - API Backend
 
-Este backend es el corazón de tu tienda en línea, proporcionando todos los servicios necesarios para que un frontend (como una aplicación React) pueda interactuar con los datos de la base de datos de manera eficiente y segura.
+¡Bienvenido al backend de **Maka Store**! 🎉
 
-✨ Características Principales
-API RESTful Completa: Endpoints bien definidos para operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en todas las entidades principales.
+Este proyecto es una API RESTful robusta desarrollada con **Spring Boot**, diseñada para gestionar un sistema de comercio electrónico completo. Es el corazón de tu tienda en línea, proporcionando todos los servicios necesarios para que un frontend pueda interactuar con los datos de manera eficiente y segura.
 
-Gestión de Productos:
+---
 
-Creación, listado, obtención por ID, actualización y eliminación de productos.
+## ✨ Características Principales
 
-Asignación de productos a categorías.
+### 🔌 API RESTful Completa
+- **Endpoints bien definidos** para operaciones CRUD (Crear, Leer, Actualizar, Eliminar)
+- **Validación de datos** usando `jakarta.validation`
+- **Manejo global de excepciones** centralizado
+- **Configuración CORS** para integración con frontends
 
-Gestión de Categorías:
+### 🏪 Gestión de Entidades
+| Entidad | Funcionalidades |
+|---------|----------------|
+| 📦 **Productos** | Crear, listar, obtener por ID, actualizar y eliminar productos |
+| 🏷️ **Categorías** | Gestión completa de categorías de productos |
+| 👥 **Clientes** | Administración de información de clientes |
+| 📋 **Pedidos** | Creación de pedidos con detalles anidados y cálculo automático del total |
+| 📝 **Detalles de Pedido** | Gestión de elementos individuales de cada pedido |
 
-Creación, listado, obtención por ID, actualización y eliminación de categorías.
+### 🛡️ Características Técnicas
+- **Capa de Servicio** (Service Layer) para encapsular lógica de negocio
+- **Mapeo de DTOs** para desacoplar entidades de la base de datos
+- **Fechas automáticas** con `@PrePersist` y `@PreUpdate`
+- **Arquitectura de capas** estándar de Spring Boot
 
-Gestión de Clientes:
+---
 
-Creación, listado, obtención por ID, actualización y eliminación de clientes.
+## 🛠️ Tecnologías Utilizadas
 
-Gestión de Pedidos:
+| Tecnología | Versión | Descripción |
+|------------|---------|-------------|
+| ☕ **Java** | 17+ | Lenguaje de programación principal |
+| 🍃 **Spring Boot** | 3.x | Framework de desarrollo |
+| 📦 **Maven** | - | Gestor de dependencias |
+| 📊 **Spring Data JPA** | - | Capa de acceso a datos |
+| 🧩 **Hibernate** | - | ORM (Object-Relational Mapping) |
+| 🐬 **MySQL** | - | Sistema de gestión de base de datos |
+| ⚙️ **Lombok** | - | Reducción de código repetitivo |
+| ✅ **Jakarta Validation** | - | Validación de datos |
+| 📄 **Jackson** | - | Serialización/deserialización JSON |
 
-Creación de pedidos con detalles anidados (múltiples productos por pedido).
+---
 
-Listado, obtención por ID, actualización y eliminación de pedidos.
+## 📂 Estructura del Proyecto
 
-Cálculo automático del total del pedido.
+```
+src/main/java/com/maka/makastore/
+├── 🔧 config/          # Configuraciones generales (CORS, etc.)
+├── 🎮 controlador/     # Endpoints REST (API)
+├── 📤 dto/             # Objetos de transferencia de datos
+├── ⚠️ excepción/       # Excepciones personalizadas y GlobalExceptionHandler
+├── 🗃️ modelo/          # Entidades JPA (mapeo a la base de datos)
+├── 💾 repository/      # Interfaces de acceso a datos
+└── 🔄 service/         # Lógica de negocio (interfaces e implementaciones)
+```
 
-Gestión de Detalles de Pedido:
+---
 
-Creación, listado, obtención por ID, actualización y eliminación de detalles de pedido.
+## 🚀 Guía de Instalación
 
-Validación de Datos: Uso de jakarta.validation para asegurar la integridad de los datos de entrada a través de DTOs.
+### 📋 1. Prerrequisitos
 
-Manejo Global de Excepciones: Un GlobalExceptionHandler centralizado para proporcionar respuestas de error consistentes y amigables (ej. 404 Not Found, 400 Bad Request, 409 Conflict).
+Asegúrate de tener instalado:
+- ☕ **Java Development Kit (JDK)** 17 o superior
+- 📦 **Apache Maven**
+- 🐬 **MySQL Server**
+- 📁 **Git**
+- 💻 **IntelliJ IDEA** (o tu IDE Java preferido)
 
-Capa de Servicio (Service Layer): Lógica de negocio encapsulada en una capa de servicio, separando las responsabilidades del controlador y el repositorio.
+### 🗄️ 2. Configuración de la Base de Datos
 
-Mapeo de DTOs: Uso de Data Transfer Objects (DTOs) para desacoplar las entidades de la base de datos de las peticiones y respuestas de la API, mejorando la seguridad y flexibilidad.
-
-CORS Configurado: Permite la integración fluida con aplicaciones frontend que se ejecutan en diferentes orígenes (ej. http://localhost:3000).
-
-Fechas Automáticas: Gestión automática de fechaCreacion y fechaActualizacion en las entidades usando @PrePersist y @PreUpdate.
-
-🛠️ Tecnologías Utilizadas
-Java 17+ ☕
-
-Spring Boot 3.x 🍃
-
-Maven 📦
-
-Spring Data JPA 📊
-
-Hibernate 🧩
-
-MySQL Database 🐬
-
-Lombok ⚙️ (para reducir código boilerplate)
-
-Jakarta Validation ✅
-
-Jackson (para serialización/deserialización JSON)
-
-📂 Estructura del Proyecto
-El proyecto sigue una arquitectura de capas estándar de Spring Boot:
-
-src/main/java/com/maka/makastore
-├── config/                  # Configuraciones generales (ej. CORS)
-├── controller/              # Endpoints REST (API)
-├── dto/                     # Data Transfer Objects (Request/Response)
-├── exception/               # Clases de excepción personalizadas y GlobalExceptionHandler
-├── model/                   # Entidades JPA (mapeo a la base de datos)
-├── repository/              # Interfaces de acceso a datos (Spring Data JPA)
-└── service/                 # Lógica de negocio (interfaces e implementaciones)
-
-🚀 Cómo Empezar
-Sigue estos pasos para poner en marcha el backend de Maka Store en tu entorno local.
-
-1. Prerrequisitos
-Asegúrate de tener instalado lo siguiente:
-
-Java Development Kit (JDK) 17 o superior
-
-Apache Maven
-
-MySQL Server
-
-Git
-
-IntelliJ IDEA (o tu IDE Java preferido)
-
-2. Configuración de la Base de Datos MySQL
-Primero, crea la base de datos y sus tablas, y luego pobla con datos de ejemplo.
-
-a. Crear la Base de Datos
-Abre tu cliente MySQL (MySQL Workbench, DBeaver, línea de comandos) y ejecuta:
-
+#### a) Crear la Base de Datos
+```sql
 CREATE DATABASE IF NOT EXISTS makastore_db;
 USE makastore_db;
+```
 
-b. Reiniciar y Alimentar la Base de Datos
-Ejecuta el siguiente script SQL completo en tu base de datos makastore_db. Este script eliminará las tablas existentes (si las hay), las recreará con el esquema correcto y las poblará con datos iniciales.
+#### b) Script de Inicialización
+> ⚠️ **ADVERTENCIA CRÍTICA**: Este script eliminará PERMANENTEMENTE todos los datos existentes.
 
-⚠️ ¡ADVERTENCIA CRÍTICA! Este script eliminará PERMANENTEMENTE todos los datos de las tablas existentes.
+<details>
+<summary>📜 Ver Script SQL Completo</summary>
 
--- Deshabilitar las comprobaciones de claves foráneas para permitir la eliminación y recreación de tablas
+```sql
+-- Deshabilitar las comprobaciones de claves extranjeras
 SET FOREIGN_KEY_CHECKS = 0;
 
--- Eliminar tablas en el orden correcto (tablas hijas antes que tablas padres)
+-- Eliminar tablas en el orden correcto
 DROP TABLE IF EXISTS detalle_pedido;
 DROP TABLE IF EXISTS pedidos;
 DROP TABLE IF EXISTS productos;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS categorias;
 
--- Recrear la tabla 'categorias'
+-- Crear tabla 'categorias'
 CREATE TABLE categorias (
     id_categoria BIGINT(20) NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL UNIQUE,
@@ -123,7 +106,7 @@ CREATE TABLE categorias (
     PRIMARY KEY (id_categoria)
 ) ENGINE=InnoDB;
 
--- Recrear la tabla 'clientes'
+-- Crear tabla 'clientes'
 CREATE TABLE clientes (
     id_cliente BIGINT(20) NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -134,7 +117,7 @@ CREATE TABLE clientes (
     PRIMARY KEY (id_cliente)
 ) ENGINE=InnoDB;
 
--- Recrear la tabla 'productos'
+-- Crear tabla 'productos'
 CREATE TABLE productos (
     id_producto BIGINT(20) NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
@@ -149,7 +132,7 @@ CREATE TABLE productos (
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 ) ENGINE=InnoDB;
 
--- Recrear la tabla 'pedidos'
+-- Crear tabla 'pedidos'
 CREATE TABLE pedidos (
     id_pedido BIGINT(20) NOT NULL AUTO_INCREMENT,
     fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -160,7 +143,7 @@ CREATE TABLE pedidos (
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 ) ENGINE=InnoDB;
 
--- Recrear la tabla 'detalle_pedido'
+-- Crear tabla 'detalle_pedido'
 CREATE TABLE detalle_pedido (
     id_detalle_pedido BIGINT(20) NOT NULL AUTO_INCREMENT,
     id_pedido BIGINT(20) NOT NULL,
@@ -169,45 +152,41 @@ CREATE TABLE detalle_pedido (
     precio_unitario DECIMAL(10,2) NOT NULL,
     subtotal DECIMAL(10,2) NOT NULL,
     PRIMARY KEY (id_detalle_pedido),
-    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido) ON DELETE CASCADE, -- Si un pedido se elimina, sus detalles también
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido) ON DELETE CASCADE,
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 ) ENGINE=InnoDB;
 
 -- Habilitar nuevamente las comprobaciones de claves foráneas
 SET FOREIGN_KEY_CHECKS = 1;
 
--- ====================================================================================
--- INSERTAR DATOS INICIALES
--- ====================================================================================
+-- Insertar datos iniciales en 'categorias'
+INSERT INTO categorias (nombre, descripcion) VALUES 
+('Electrónica', 'Dispositivos electrónicos, gadgets y accesorios.'),
+('Ropa', 'Prendas de vestir para hombres, mujeres y niños.'),
+('Hogar y Cocina', 'Artículos para el hogar, utensilios de cocina y decoración.');
 
--- Insertar datos en 'categorias'
-INSERT INTO categorias (nombre, descripcion) VALUES
-('Electrónica', 'Dispositivos electrónicos, gadgets y accesorios.'), -- ID 1
-('Ropa', 'Prendas de vestir para hombres, mujeres y niños.'),      -- ID 2
-('Hogar y Cocina', 'Artículos para el hogar, utensilios de cocina y decoración.'); -- ID 3
+-- Insertar datos iniciales en 'clientes'
+INSERT INTO clientes (nombre, apellido, email, telefono, direccion) VALUES 
+('Juan', 'Pérez', 'juan.perez@example.com', '111-222-3333', 'Calle Falsa 123'),
+('Ana', 'Gómez', 'ana.gomez@example.com', '444-555-6666', 'Avenida Siempre Viva 742');
 
--- Insertar datos en 'clientes'
-INSERT INTO clientes (nombre, apellido, email, telefono, direccion) VALUES
-('Juan', 'Pérez', 'juan.perez@example.com', '111-222-3333', 'Calle Falsa 123'), -- ID 1
-('Ana', 'Gómez', 'ana.gomez@example.com', '444-555-6666', 'Avenida Siempre Viva 742'); -- ID 2
+-- Insertar datos iniciales en 'productos'
+INSERT INTO productos (nombre, precio, stock, descripcion, id_categoria, imagen) VALUES 
+('Smartphone X', 799.99, 50, 'Cámara 48MP, 128GB almacenamiento', 1, 'smartphone_x.jpg'),
+('Camiseta Algodón', 25.00, 100, 'Camiseta básica 100% algodón', 2, 'camiseta_algodon.jpg'),
+('Juego de Sartenes', 89.99, 30, 'Set de 3 sartenes antiadherentes', 3, 'sartenes.jpg'),
+('Auriculares Bluetooth', 120.00, 75, 'Auriculares inalámbricos con cancelación de ruido', 1, 'auriculares_bt.jpg');
 
--- Insertar datos en 'productos' (asegurando que id_categoria exista)
-INSERT INTO productos (nombre, precio, stock, descripcion, id_categoria, imagen) VALUES
-('Smartphone X', 799.99, 50, 'Cámara 48MP, 128GB almacenamiento', 1, 'smartphone_x.jpg'), -- ID 1 (Cat: Electrónica)
-('Camiseta Algodón', 25.00, 100, 'Camiseta básica 100% algodón', 2, 'camiseta_algodon.jpg'), -- ID 2 (Cat: Ropa)
-('Juego de Sartenes', 89.99, 30, 'Set de 3 sartenes antiadherentes', 3, 'sartenes.jpg'), -- ID 3 (Cat: Hogar y Cocina)
-('Auriculares Bluetooth', 120.00, 75, 'Auriculares inalámbricos con cancelación de ruido', 1, 'auriculares_bt.jpg'); -- ID 4 (Cat: Electrónica)
+-- Insertar datos iniciales en 'pedidos'
+INSERT INTO pedidos (total, estado_pedido, id_cliente) VALUES 
+(824.99, 'PENDIENTE', 1),
+(120.00, 'COMPLETADO', 2);
 
--- Insertar datos en 'pedidos' (asegurando que id_cliente exista)
-INSERT INTO pedidos (total, estado_pedido, id_cliente) VALUES
-(824.99, 'PENDIENTE', 1), -- ID 1 (Cliente: Juan Pérez)
-(120.00, 'COMPLETADO', 2); -- ID 2 (Cliente: Ana Gómez)
-
--- Insertar datos en 'detalle_pedido' (asegurando que id_pedido y id_producto existan)
-INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, precio_unitario, subtotal) VALUES
-(1, 1, 1, 799.99, 799.99), -- Pedido 1, Producto 1 (Smartphone X)
-(1, 2, 1, 25.00, 25.00),   -- Pedido 1, Producto 2 (Camiseta Algodón)
-(2, 4, 1, 120.00, 120.00); -- Pedido 2, Producto 4 (Auriculares Bluetooth)
+-- Insertar datos iniciales en 'detalle_pedido'
+INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, precio_unitario, subtotal) VALUES 
+(1, 1, 1, 799.99, 799.99),
+(1, 2, 1, 25.00, 25.00),
+(2, 4, 1, 120.00, 120.00);
 
 -- Verificar que todas las tablas tienen datos
 SELECT 'Categorias' AS Tabla, COUNT(*) AS Registros FROM categorias
@@ -215,81 +194,87 @@ UNION ALL SELECT 'Clientes', COUNT(*) FROM clientes
 UNION ALL SELECT 'Productos', COUNT(*) FROM productos
 UNION ALL SELECT 'Pedidos', COUNT(*) FROM pedidos
 UNION ALL SELECT 'Detalle_Pedido', COUNT(*) FROM detalle_pedido;
+```
+</details>
 
-c. Configurar application.properties
-Abre el archivo src/main/resources/application.properties en tu proyecto y asegúrate de que la configuración de la base de datos sea correcta:
-
+#### c) Configurar `application.properties`
+```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/makastore_db?useSSL=false&serverTimezone=UTC
 spring.datasource.username=root
 spring.datasource.password=tu_contraseña_mysql
-spring.jpa.hibernate.ddl-auto=update # O "none" si prefieres gestionar los esquemas manualmente
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+```
 
-¡Importante! Reemplaza tu_contraseña_mysql con la contraseña de tu usuario root de MySQL.
+> 🔑 **Importante**: Reemplaza `tu_contraseña_mysql` con la contraseña de tu usuario root de MySQL.
 
-3. Clonar el Repositorio (Si aún no lo tienes)
-Si aún no tienes el proyecto en tu máquina, clónalo desde GitHub usando la URL correcta:
+### 📥 3. Clonar el Repositorio
 
+```bash
 git clone https://github.com/F250680/maka-store.git
 cd maka-store
+```
 
-4. Ejecutar la Aplicación
-a. Desde IntelliJ IDEA
-Abre IntelliJ IDEA.
+### ▶️ 4. Ejecutar la Aplicación
 
-Selecciona Open y navega hasta la carpeta maka-store. IntelliJ debería reconocerlo como un proyecto Maven.
+#### Opción A: Desde IntelliJ IDEA
+1. 📂 Abre IntelliJ IDEA
+2. 📁 Selecciona **Abrir** y navega hasta la carpeta `maka-store`
+3. ⏳ Espera a que Maven descargue las dependencias
+4. 🔍 Busca el archivo `MakaStoreApplication.java`
+5. ▶️ Clic derecho → **Ejecutar 'MakaStoreApplication.main()'**
 
-Espera a que Maven descargue las dependencias.
-
-Busca el archivo MakaStoreApplication.java (en src/main/java/com/maka/makastore/).
-
-Haz clic derecho sobre él y selecciona Run 'MakaStoreApplication.main()'.
-
-b. Desde la Línea de Comandos (Maven)
-Abre tu terminal (o Git Bash) y navega a la carpeta raíz del proyecto maka-store.
-
-Ejecuta el siguiente comando para construir el proyecto:
-
+#### Opción B: Desde la Línea de Comandos
+```bash
+# Construir el proyecto
 mvn clean install
 
-Una vez que la construcción sea exitosa, ejecuta la aplicación:
-
+# Ejecutar la aplicación
 mvn spring-boot:run
+```
 
-El backend se iniciará, por defecto, en http://localhost:8080.
+🌐 **El backend se iniciará en**: `http://localhost:8080`
 
-🌐 Endpoints de la API
-Aquí hay una descripción general de los principales endpoints que puedes probar (asumiendo que el backend se ejecuta en http://localhost:8080):
+---
 
-Categorías (/api/categorias)
-GET /api/categorias: Obtener todas las categorías.
+## 🌐 Endpoints de la API
 
-GET /api/categorias/{id}: Obtener una categoría por ID.
+### 🏷️ Categorías (`/api/categorias`)
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/api/categorias` | Obtener todas las categorías |
+| `GET` | `/api/categorias/{id}` | Obtener categoría por ID |
+| `POST` | `/api/categorias` | Crear nueva categoría |
+| `PUT` | `/api/categorias/{id}` | Actualizar categoría |
+| `DELETE` | `/api/categorias/{id}` | Eliminar categoría |
 
-POST /api/categorias: Crear una nueva categoría.
+<details>
+<summary>📋 Ver ejemplos de JSON</summary>
 
+**POST/PUT - Crear/Actualizar categoría:**
+```json
 {
     "nombre": "Electrónica",
     "descripcion": "Dispositivos electrónicos y gadgets."
 }
+```
+</details>
 
-PUT /api/categorias/{id}: Actualizar una categoría existente.
+### 👥 Clientes (`/api/clientes`)
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/api/clientes` | Obtener todos los clientes |
+| `GET` | `/api/clientes/{id}` | Obtener cliente por ID |
+| `POST` | `/api/clientes` | Crear nuevo cliente |
+| `PUT` | `/api/clientes/{id}` | Actualizar cliente |
+| `DELETE` | `/api/clientes/{id}` | Eliminar cliente |
 
-{
-    "nombre": "Electrónica Actualizada",
-    "descripcion": "Dispositivos electrónicos y gadgets de última generación."
-}
+<details>
+<summary>📋 Ver ejemplos de JSON</summary>
 
-DELETE /api/categorias/{id}: Eliminar una categoría.
-
-Clientes (/api/clientes)
-GET /api/clientes: Obtener todos los clientes.
-
-GET /api/clientes/{id}: Obtener un cliente por ID.
-
-POST /api/clientes: Crear un nuevo cliente.
-
+**POST/PUT - Crear/Actualizar cliente:**
+```json
 {
     "nombre": "Carlos",
     "apellido": "García",
@@ -297,26 +282,23 @@ POST /api/clientes: Crear un nuevo cliente.
     "telefono": "555-123-4567",
     "direccion": "Av. Siempre Viva 123"
 }
+```
+</details>
 
-PUT /api/clientes/{id}: Actualizar un cliente existente.
+### 📦 Productos (`/api/productos`)
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/api/productos` | Obtener todos los productos |
+| `GET` | `/api/productos/{id}` | Obtener producto por ID |
+| `POST` | `/api/productos` | Crear nuevo producto |
+| `PUT` | `/api/productos/{id}` | Actualizar producto |
+| `DELETE` | `/api/productos/{id}` | Eliminar producto |
 
-{
-    "nombre": "Carlos",
-    "apellido": "García Actualizado",
-    "email": "carlos.garcia@example.com",
-    "telefono": "555-987-6543",
-    "direccion": "Av. Siempre Viva 456"
-}
+<details>
+<summary>📋 Ver ejemplos de JSON</summary>
 
-DELETE /api/clientes/{id}: Eliminar un cliente.
-
-Productos (/api/productos)
-GET /api/productos: Obtener todos los productos.
-
-GET /api/productos/{id}: Obtener un producto por ID.
-
-POST /api/productos: Crear un nuevo producto.
-
+**POST/PUT - Crear/Actualizar producto:**
+```json
 {
     "nombre": "Licuadora Pro",
     "precio": 150.00,
@@ -325,27 +307,23 @@ POST /api/productos: Crear un nuevo producto.
     "idCategoria": 3,
     "imagen": "licuadora.jpg"
 }
+```
+</details>
 
-PUT /api/productos/{id}: Actualizar un producto existente.
+### 📋 Pedidos (`/api/pedidos`)
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/api/pedidos` | Obtener todos los pedidos |
+| `GET` | `/api/pedidos/{id}` | Obtener pedido por ID |
+| `POST` | `/api/pedidos` | Crear nuevo pedido |
+| `PUT` | `/api/pedidos/{id}` | Actualizar pedido |
+| `DELETE` | `/api/pedidos/{id}` | Eliminar pedido |
 
-{
-    "nombre": "Licuadora Pro Max",
-    "precio": 175.50,
-    "stock": 15,
-    "descripcion": "Licuadora de alta potencia con funciones avanzadas",
-    "idCategoria": 3,
-    "imagen": "licuadora_pro_max.jpg"
-}
+<details>
+<summary>📋 Ver ejemplos de JSON</summary>
 
-DELETE /api/productos/{id}: Eliminar un producto.
-
-Pedidos (/api/pedidos)
-GET /api/pedidos: Obtener todos los pedidos.
-
-GET /api/pedidos/{id}: Obtener un pedido por ID.
-
-POST /api/pedidos: Crear un nuevo pedido con detalles.
-
+**POST - Crear pedido:**
+```json
 {
     "estadoPedido": "PENDIENTE",
     "idCliente": 1,
@@ -362,9 +340,10 @@ POST /api/pedidos: Crear un nuevo pedido con detalles.
         }
     ]
 }
+```
 
-PUT /api/pedidos/{id}: Actualizar un pedido existente (incluyendo sus detalles).
-
+**PUT - Actualizar pedido:**
+```json
 {
     "estadoPedido": "COMPLETADO",
     "idCliente": 1,
@@ -376,70 +355,108 @@ PUT /api/pedidos/{id}: Actualizar un pedido existente (incluyendo sus detalles).
         }
     ]
 }
+```
+</details>
 
-DELETE /api/pedidos/{id}: Eliminar un pedido.
+### 📝 Detalles de Pedido (`/api/detalles`)
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/api/detalles` | Obtener todos los detalles |
+| `GET` | `/api/detalles/{id}` | Obtener detalle por ID |
+| `POST` | `/api/detalles` | Crear nuevo detalle |
+| `PUT` | `/api/detalles/{id}` | Actualizar detalle |
+| `DELETE` | `/api/detalles/{id}` | Eliminar detalle |
 
-Detalles de Pedido (/api/detalles)
-GET /api/detalles: Obtener todos los detalles de pedido.
+<details>
+<summary>📋 Ver ejemplos de JSON</summary>
 
-GET /api/detalles/{id}: Obtener un detalle de pedido por ID.
-
-POST /api/detalles: Crear un nuevo detalle de pedido.
-
+**POST/PUT - Crear/Actualizar detalle:**
+```json
 {
     "cantidad": 1,
     "precioUnitario": 120.00,
     "idPedido": 2,
     "idProducto": 4
 }
+```
+</details>
 
-PUT /api/detalles/{id}: Actualizar un detalle de pedido existente.
+---
 
-{
-    "cantidad": 2,
-    "precioUnitario": 120.00,
-    "idPedido": 2,
-    "idProducto": 4
-}
+## 🧪 Pruebas con Postman
 
-DELETE /api/detalles/{id}: Eliminar un detalle de pedido.
+📬 **Recomendación**: Usa **Postman** para probar los endpoints de la API.
 
-🧪 Pruebas con Postman
-Se recomienda usar Postman para probar los endpoints de la API. Puedes importar una colección de Postman si la tienes, o crear las solicitudes manualmente siguiendo los ejemplos de JSON anteriores.
+1. 📥 Descarga e instala [Postman](https://www.postman.com/)
+2. 🔗 Configura la URL base: `http://localhost:8080`
+3. 📝 Crea las solicitudes usando los ejemplos JSON proporcionados
+4. ✅ Prueba cada endpoint para verificar su funcionamiento
 
-🔒 Configuración CORS
-El backend está configurado para permitir solicitudes desde http://localhost:3000, que es el origen común para el desarrollo de aplicaciones React. Si tu frontend se ejecuta en un puerto diferente o en un dominio distinto (ej. en producción), deberás actualizar la clase CorsConfig.java en el paquete com.maka.makastore.config.
+---
 
+## 🔒 Configuración CORS
+
+El backend está configurado para permitir solicitudes desde `http://localhost:3000` (común para desarrollo de React).
+
+**Para cambiar el origen permitido**, edita `CorsConfig.java`:
+
+```java
 // En src/main/java/com/maka/makastore/config/CorsConfig.java
 registry.addMapping("/**")
-        .allowedOrigins("http://localhost:3000" /*, "https://tudominio.com" */) // <--- ¡Actualiza aquí!
-        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-        .allowedHeaders("*")
-        .allowCredentials(true)
-        .maxAge(3600);
+    .allowedOrigins("http://localhost:3000", "https://tudominio.com") // ⬅️ Actualiza aquí
+    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+    .allowedHeaders("*")
+    .allowCredentials(true)
+    .maxAge(3600);
+```
 
-🚀 Próximos Pasos (Posibles Mejoras)
-Autenticación y Autorización: Implementar Spring Security con JWT o OAuth2.
+---
 
-Paginación y Filtrado: Añadir soporte para paginación y filtrado en los endpoints GET.
+## 🚀 Próximos Pasos (Mejoras Sugeridas)
 
-Pruebas Unitarias e Integración: Escribir pruebas exhaustivas para controladores, servicios y repositorios.
+### 🔐 Seguridad
+- **Autenticación y Autorización** con Spring Security + JWT/OAuth2
 
-Dockerización: Crear un Dockerfile para empaquetar la aplicación en un contenedor.
+### 📊 Funcionalidad
+- **Paginación y Filtrado** en endpoints GET
+- **Notificaciones por email** para pedidos
+- **Sistema de inventario** avanzado
 
-Despliegue: Desplegar la aplicación en un servicio en la nube (Heroku, AWS, Google Cloud, Azure).
+### 🧪 Calidad
+- **Pruebas Unitarias e Integración** exhaustivas
+- **Documentación API** con Swagger/OpenAPI
 
-Integración de Pasarela de Pago: Conectar con Stripe, PayPal, etc.
+### 🐳 DevOps
+- **Dockerización** de la aplicación
+- **Despliegue en la nube** (Heroku, AWS, Google Cloud, Azure)
+- **CI/CD Pipeline**
 
-Notificaciones: Implementar notificaciones por correo electrónico para pedidos.
+---
 
-👨‍💻 Autor
-Franco Fernando Ojeda Insuasty
+## 👨‍💻 Autor
 
-F250680
+**Franco Fernando Ojeda Insuasty**
+- 🆔 **ID**: F250680
+- 📧 **Email**: f2ojeda250680@gmail.com
+- 💻 **GitHub**: [F250680](https://github.com/F250680)
 
-f2ojeda250680@gmail.com
+---
 
-¡Gracias por revisar el backend de Maka Store! Si tienes alguna pregunta o sugerencia, no dudes en contactarme.
- 
- 
+## 🙏 Agradecimientos
+
+¡Gracias por revisar el backend de **Maka Store**! 🎉
+
+Si tienes alguna pregunta, sugerencia o encuentras algún problema, no dudes en:
+- 📧 Contactarme por email
+- 🐛 Crear un issue en GitHub
+- 🔀 Hacer un pull request
+
+---
+
+<div align="center">
+  
+**⭐ Si este proyecto te fue útil, ¡no olvides darle una estrella! ⭐**
+
+*Hecho con ❤️ y ☕ en Colombia* 🇨🇴
+
+</div>
